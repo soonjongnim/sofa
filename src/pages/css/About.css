@@ -1,0 +1,77 @@
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: "Noto Sans", "맑은 고딕", Arial, sans-serif;
+    color: #333;
+}
+
+.about-title {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 40px;
+    font-weight: 400;
+    letter-spacing: -.8px;
+    color: #9c73b1 !important;
+}
+
+.about-title:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    content: "";
+    width: 800px;
+    height: 1px;
+    background-color: #ebebeb;
+}
+
+.uio_title_bullet {
+    background-color: #9c73b1 !important;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 1px;
+    z-index: 1;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: #222;
+    text-align: center;
+}
+
+.about-image-container {
+    margin: 1.5rem 0;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.about-description {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.about-details {
+    font-size: 15px;
+    font-weight: 600;
+    color: #666;
+}
+
+.about-details h4 {
+    color: #222;
+}
+
+.line {
+    background: url(../../../public/assets/line.gif) repeat-x 0 50%;
+    -webkit-background-size: 3px 1px;
+    background-size: 3px 1px;
+    height: 40px;
+    margin: 0;
+}

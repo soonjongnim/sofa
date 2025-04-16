@@ -1,0 +1,105 @@
+/* 회원가입 페이지 전체 컨테이너 */
+.signup-container {
+  max-width: 400px;
+  margin: 2.5em auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.signup-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6b46c1; /* 보라색 */
+  margin-bottom: 1.5rem;
+}
+
+/* 폼 스타일 */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 폼 그룹 스타일 */
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  border-color: #6b46c1;
+  outline: none;
+  box-shadow: 0 0 4px rgba(107, 70, 193, 0.5);
+}
+
+/* 에러 메시지 스타일 */
+.form-group small {
+  color: #e53e3e; /* 빨간색 */
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* 버튼 스타일 */
+.signup-button {
+  background-color: #6b46c1;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #5a3aa1;
+}
+
+/* 아이디 입력 필드와 중복확인 버튼 컨테이너 */
+.username-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.username-container input {
+  flex: 1;
+}
+
+.check-button {
+  background-color: #6b46c1;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.check-button:hover {
+  background-color: #5a3aa1;
+}

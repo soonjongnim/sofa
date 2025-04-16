@@ -1,0 +1,16 @@
+/* 기본 스타일 */
+.min-h-screen {
+    overflow: visible;
+    position: static;
+  }
+  
+  /* 사이드 메뉴가 열렸을 때 적용되는 스타일 */
+  .menu-open {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 320px; /* 사이드 메뉴 너비 */
+    left: 0;
+  }
