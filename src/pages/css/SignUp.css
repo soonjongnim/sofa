@@ -79,13 +79,13 @@
   background-color: #5a3aa1;
 }
 
-/* 아이디 입력 필드와 중복확인 버튼 컨테이너 */
-.username-container {
+/* 이메일 입력 필드와 중복확인 버튼 컨테이너 */
+.useremail-container {
   display: flex;
   gap: 0.5rem;
 }
 
-.username-container input {
+.useremail-container input {
   flex: 1;
 }
 
