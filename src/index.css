@@ -239,7 +239,7 @@ footer a {
   display: inline-block;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
 .home-image {
@@ -292,6 +292,10 @@ footer a {
   text-align: center;
   float: left;
   width: 33.33333333%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: start;
 }
 
 .action-button:hover {
@@ -326,4 +330,18 @@ footer a {
 .contact-button:hover {
   background: #573b65;
   color: white;
+}
+
+@media (max-width: 545px) {
+  .overlay {
+    min-width: 150px;
+  }
+
+  .overlay h1 {
+    font-size: 1.2em;
+  }
+
+  .overlay p {
+    font-size: 0.9em;
+  }
 }
