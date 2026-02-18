@@ -8,15 +8,19 @@ const HomeSection = () => {
   const navigate = useNavigate();
 
   const handleTextInquiry = () => {
-    setPopupData({
-      phoneNumber: '6341-6469',
-      message: '문자연결',
-    });
-    setShowPopup(true);
+    if (/SOFA_APP/i.test(navigator.userAgent)) {
+      window.location.href = 'sms:01097308087';
+    } else {
+      setPopupData({
+        phoneNumber: '010-9730-8087',
+        message: '문자연결',
+      });
+      setShowPopup(true);
+    }
   };
 
   const handleCall = () => {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
+    if (/SOFA_APP/i.test(navigator.userAgent)) {
       window.location.href = 'tel:01097308087';
     } else {
       setPopupData({
@@ -28,11 +32,15 @@ const HomeSection = () => {
   };
 
   const handleQuickConsultation = () => {
-    setPopupData({
-      phoneNumber: '010-9730-8087',
-      message: '전화연결',
-    });
-    setShowPopup(true);
+    if (/SOFA_APP/i.test(navigator.userAgent)) {
+      window.location.href = 'tel:01097308087';
+    } else {
+      setPopupData({
+        phoneNumber: '010-9730-8087',
+        message: '전화연결',
+      });
+      setShowPopup(true);
+    }
   };
 
   const goToGallery = () => {
