@@ -1,217 +1,148 @@
 .gallery-container {
-    max-width: 800px;
+    padding: 1rem;
+    max-width: 100%;
     margin: 0 auto;
-    font-family: "Noto Sans", "맑은 고딕", Arial, sans-serif;
-    color: #333;
+    background: #f8f9fa;
 }
 
 .gallery-title {
-    display: inline-block;
-    position: relative;
-    margin-bottom: 40px;
-    font-weight: 400;
-    letter-spacing: -.8px;
-    color: #9c73b1 !important;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #9c73b1;
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid #9c73b1;
 }
 
 .gallery-title:after {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -10px;
-    content: "";
-    width: 800px;
-    height: 1px;
-    background-color: #ebebeb;
+    display: none;
 }
 
 .uio_title_bullet {
-    background-color: #9c73b1 !important;
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 100%;
-    height: 1px;
-    z-index: 1;
+    display: none;
 }
 
 .gallery-main-image {
-    margin: 1.5rem 0;
-    position: relative;
+    margin: 0 0 1rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-image {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: opacity 1s ease-in-out;
-    cursor: pointer;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-.fade-in {
-    opacity: 1;
-}
-
-/* Thumbnails and More Button Container */
+/* Grid Layout for Thumbnails */
 .gallery-thumbnails {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* 수직 정렬 */
-    gap: 0.5rem;
-    margin: 1rem 0;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin: 0;
+}
+
+.thumbnail-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .thumbnail {
-    width: 60px;
-    height: 60px;
+    width: 100% !important;
+    height: 120px !important;
     object-fit: cover;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.thumbnail:hover {
-    opacity: 1;
-    transform: scale(1.1);
+    opacity: 1 !important;
+    border: none !important;
+    transition: transform 0.3s ease;
 }
 
 .thumbnail.active {
-    opacity: 1;
-    border: 2px solid #a78bfa;
+    border: 3px solid #9c73b1 !important;
 }
 
-/* More Button */
 .more-button {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0.6;
-    border: 1px solid #ccc;
-    background-color: white;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.more-button:hover {
-    background: #573b65;
-    color: white;
-}
-
-/* Popup Styles */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    width: 100% !important;
+    height: 120px !important;
+    background: rgba(156, 115, 177, 0.1) !important;
+    color: #9c73b1 !important;
+    font-weight: bold;
+    border: 2px dashed #9c73b1 !important;
+    border-radius: 8px !important;
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 1000;
+    justify-content: center;
+}
+
+/* Specific styling for the second gallery */
+.gallery-container>div:nth-of-type(3) {
+    margin-top: 2rem;
+}
+
+/* Popup Mobile Optimization */
+.popup {
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
 }
 
 .popup-content {
-    position: relative;
-    background: white;
-    padding: 4rem;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 90%;
-    max-height: 90%;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .popup-image {
-    width: 800px;
-    /* 고정된 너비 */
-    height: 600px;
-    /* 고정된 높이 */
-    object-fit: cover;
-    /* 이미지 비율 유지하며 고정 크기에 맞춤 */
-    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #9c73b1;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.close-button:hover {
-    background: #573b65;
+    top: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 12px;
 }
 
 .prev-button,
 .next-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #9c73b1;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-weight: bold;
 }
 
-.prev-button {
-    left: 10px;
-}
-
-.next-button {
-    right: 10px;
-}
-
-.prev-button:hover,
-.next-button:hover {
-    background: #573b65;
-}
-
-/* Popup Thumbnails */
 .popup-thumbnails {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
     margin-top: 1rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .popup-thumbnails .thumbnail {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    width: 60px !important;
+    height: 60px !important;
+    display: inline-block;
 }
 
-.popup-thumbnails .thumbnail:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-.popup-thumbnails .thumbnail.active {
-    opacity: 1;
-    border: 2px solid #a78bfa;
-}
-
-/* 페이드인-아웃 효과 */
-.fade-in {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+@media (max-width: 480px) {
+    .gallery-image {
+        height: 200px;
+    }
 }

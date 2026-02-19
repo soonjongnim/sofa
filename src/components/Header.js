@@ -51,7 +51,7 @@ const Header = ({ toggleMenu }) => {
   return (
     <>
       <header className="flex justify-between p-4 border-b">
-        <div className="logo">수원 인테리어 소파 천갈이 영업용 가정용 소파</div>
+        <Link to="/" className="logo">수원쇼파천갈이</Link>
         <nav id="menu" className="flex space-x-4 text-sm text-gray-700">
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>반갑습니다</Link>
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>소개(인사말)</Link>

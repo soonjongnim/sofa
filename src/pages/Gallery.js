@@ -159,13 +159,14 @@ const Gallery = () => {
       </div>
       <div className="gallery-thumbnails">
         {visibleImages1.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Thumbnail 1 - ${index + 1}`}
-            className={`thumbnail ${index === currentIndex1 ? 'active' : ''}`}
-            onClick={() => handleGalleryThumbnailClick1(index)}
-          />
+          <div key={index} className="thumbnail-wrapper">
+            <img
+              src={image}
+              alt={`Thumbnail 1 - ${index + 1}`}
+              className={`thumbnail ${index === currentIndex1 ? 'active' : ''}`}
+              onClick={() => handleGalleryThumbnailClick1(index)}
+            />
+          </div>
         ))}
         <button className="more-button" onClick={() => setIsPopupOpen1(true)}>
           더보기
@@ -203,7 +204,7 @@ const Gallery = () => {
           </div>
         </div>
       )}
-        
+
       {/* 두 번째 갤러리 */}
       <div className="gallery-main-image">
         <img
@@ -215,13 +216,14 @@ const Gallery = () => {
       </div>
       <div className="gallery-thumbnails">
         {visibleImages2.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Thumbnail 2 - ${index + 1}`}
-            className={`thumbnail ${index === currentIndex2 ? 'active' : ''}`}
-            onClick={() => handleGalleryThumbnailClick2(index)}
-          />
+          <div key={index} className="thumbnail-wrapper">
+            <img
+              src={image}
+              alt={`Thumbnail 2 - ${index + 1}`}
+              className={`thumbnail ${index === currentIndex2 ? 'active' : ''}`}
+              onClick={() => handleGalleryThumbnailClick2(index)}
+            />
+          </div>
         ))}
         <button className="more-button" onClick={() => setIsPopupOpen2(true)}>
           더보기

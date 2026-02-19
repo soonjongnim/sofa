@@ -74,13 +74,9 @@ const HomeSection = () => {
         <button className="action-button" onClick={handleQuickConsultation}>
           💬 빠른상담
         </button>
-      </div>
-      <div className="contact-container">
         <button className="contact-button" onClick={handleTextInquiry}>
           ✉️ 문자로 문의하기
         </button>
-      </div>
-      <div className="contact-container">
         <button className="contact-button" onClick={handleCall}>
           📞 매장으로 연결하기
         </button>
