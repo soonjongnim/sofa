@@ -48,12 +48,12 @@ const Header = ({ toggleMenu }) => {
     alert("세션이 만료되었습니다. 다시 로그인해주세요.");
   };
 
-  const [isSmallScreen, setIsSmallScreen] = React.useState(window.innerWidth <= 350);
+  const [isSmallScreen, setIsSmallScreen] = React.useState(window.innerWidth <= 385);
   const isApp = /SOFA_APP/i.test(navigator.userAgent);
 
   React.useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 350);
+      setIsSmallScreen(window.innerWidth <= 385);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -63,35 +63,32 @@ const Header = ({ toggleMenu }) => {
 
   return (
     <>
-      <header className="flex justify-between items-center p-4 border-b bg-white sticky top-0 z-50">
-        <Link to="/" className="text-xl font-bold text-purple-600">수원쇼파천갈이</Link>
+      <header className="flex justify-between items-center p-4 border-b bg-white sticky top-0 z-50 shadow-sm">
+        <Link to="/" className="text-xl font-bold text-purple-600 tracking-tight">수원쇼파천갈이</Link>
         <div className="flex items-center">
-          {/* 어중간한 모바일 웹에서도 쾌적하게 보이도록 가로 스크롤 허용 또는 줄바꿈 처리 */}
           {!showHamburger && (
-            <nav id="menu" className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-700 mr-2">
-              <Link to="/" className={location.pathname === '/' ? 'text-purple-600 font-bold' : ''}>반갑습니다</Link>
-              <Link to="/about" className={location.pathname === '/about' ? 'text-purple-600 font-bold' : ''}>소개</Link>
-              <Link to="/gallery" className={location.pathname === '/gallery' ? 'text-purple-600 font-bold' : ''}>갤러리</Link>
-              <Link to="/map" className={location.pathname === '/map' ? 'text-purple-600 font-bold' : ''}>오시는길</Link>
+            <nav id="menu" className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-gray-700 mr-2">
+              <Link to="/" className={location.pathname === '/' ? 'text-purple-600 font-bold' : 'hover:text-purple-500 transition-colors'}>반갑습니다</Link>
+              <Link to="/about" className={location.pathname === '/about' ? 'text-purple-600 font-bold' : 'hover:text-purple-500 transition-colors'}>소개</Link>
+              <Link to="/gallery" className={location.pathname === '/gallery' ? 'text-purple-600 font-bold' : 'hover:text-purple-500 transition-colors'}>갤러리</Link>
+              <Link to="/map" className={location.pathname === '/map' ? 'text-purple-600 font-bold' : 'hover:text-purple-500 transition-colors'}>오시는길</Link>
               {user ? (
-                <button onClick={handleLogout} className="text-red-500">로그아웃</button>
+                <button onClick={handleLogout} className="text-red-500 hover:text-red-700">로그아웃</button>
               ) : (
-                <Link to="/login" className={location.pathname === '/login' ? 'text-purple-600 font-bold' : ''}>로그인</Link>
+                <Link to="/login" className={location.pathname === '/login' ? 'text-purple-600 font-bold' : 'hover:text-purple-500 transition-colors'}>로그인</Link>
               )}
             </nav>
           )}
 
           {showHamburger && (
             <button
-              className="p-2 focus:outline-none"
+              className="p-2 w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none hover:bg-gray-50 rounded-lg transition-colors"
               onClick={toggleMenu}
               aria-label="Menu"
             >
-              <div className="space-y-1.5">
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-              </div>
+              <span className="block w-6 h-0.5 bg-gray-800 rounded-full"></span>
+              <span className="block w-6 h-0.5 bg-gray-800 rounded-full"></span>
+              <span className="block w-6 h-0.5 bg-gray-800 rounded-full"></span>
             </button>
           )}
         </div>
