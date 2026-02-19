@@ -48,15 +48,13 @@ const Header = ({ toggleMenu }) => {
     alert("세션이 만료되었습니다. 다시 로그인해주세요.");
   };
 
-  const isApp = /SOFA_APP/i.test(navigator.userAgent);
-
   return (
     <>
       <header className="flex justify-between items-center p-4 border-b bg-white sticky top-0 z-50">
         <Link to="/" className="text-xl font-bold text-purple-600">수원쇼파천갈이</Link>
         <div className="flex items-center">
-          {/* 웹이거나 앱의 데스크톱 뷰일 때 메뉴 노출 */}
-          <nav id="menu" className={`${isApp ? 'hidden md:flex' : 'flex'} flex-wrap gap-x-4 gap-y-2 text-sm text-gray-700 mr-4`}>
+          {/* 데스크톱(768px 이상)에서 메뉴 노출, 모바일에서는 숨김 */}
+          <nav id="menu" className="hidden md:flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-700 mr-4">
             <Link to="/" className={location.pathname === '/' ? 'text-purple-600 font-bold' : ''}>반갑습니다</Link>
             <Link to="/about" className={location.pathname === '/about' ? 'text-purple-600 font-bold' : ''}>소개(인사말)</Link>
             <Link to="/gallery" className={location.pathname === '/gallery' ? 'text-purple-600 font-bold' : ''}>쇼파갤러리</Link>
@@ -68,20 +66,18 @@ const Header = ({ toggleMenu }) => {
             )}
           </nav>
 
-          {/* 앱일 때만 햄버거 버튼 노출 */}
-          {isApp && (
-            <button
-              className="p-2 focus:outline-none md:hidden"
-              onClick={toggleMenu}
-              aria-label="Menu"
-            >
-              <div className="space-y-1.5">
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-                <span className="block w-6 h-0.5 bg-gray-600"></span>
-              </div>
-            </button>
-          )}
+          {/* 모바일(768px 미만)일 때 햄버거 버튼 노출 (브라우저/앱 모두) */}
+          <button
+            className="p-2 focus:outline-none md:hidden"
+            onClick={toggleMenu}
+            aria-label="Menu"
+          >
+            <div className="space-y-1.5">
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+            </div>
+          </button>
         </div>
       </header>
     </>
