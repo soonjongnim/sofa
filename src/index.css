@@ -215,7 +215,7 @@ nav a.active {
 
 /* Footer SNS Icons */
 .social-icons {
-  display: flex;
+  display: flex !important;
   gap: 12px;
   justify-content: center;
   margin-top: 1.5rem;
@@ -334,4 +334,33 @@ footer {
   .content {
     padding: 1rem;
   }
+}
+
+/* Beautiful Hamburger Menu Icon */
+.hamburger-btn {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5.5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.hamburger-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger-line {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background-color: #000;
+  border-radius: 10px;
 }

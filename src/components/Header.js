@@ -82,13 +82,13 @@ const Header = ({ toggleMenu }) => {
 
           {showHamburger && (
             <button
-              className="p-2 w-10 h-10 flex flex-col justify-center items-center gap-[5px] focus:outline-none hover:bg-gray-50 rounded-lg transition-all"
+              className="hamburger-btn"
               onClick={toggleMenu}
               aria-label="Menu"
             >
-              <span className="block w-6 h-[3px] bg-black rounded-full"></span>
-              <span className="block w-6 h-[3px] bg-black rounded-full"></span>
-              <span className="block w-6 h-[3px] bg-black rounded-full"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
             </button>
           )}
         </div>
