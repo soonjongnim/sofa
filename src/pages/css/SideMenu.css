@@ -2,18 +2,21 @@
 .side-menu {
   position: fixed;
   top: 0;
-  right: -320px; /* 초기 위치: 화면 밖 */
+  right: -320px;
+  /* 초기 위치: 화면 밖 */
   width: 320px;
   height: 100%;
-  background-color: #9c73b1 !important; /* 보라색 배경 */
+  background-color: #9c73b1 !important;
+  /* 보라색 배경 */
   color: white;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  /* transition: right 0.3s ease-in-out; */
+  transition: right 0.3s ease-in-out;
   z-index: 1000;
 }
 
 .side-menu.open {
-  right: 0; /* 메뉴가 열리면 화면 안으로 이동 */
+  right: 0;
+  /* 메뉴가 열리면 화면 안으로 이동 */
 }
 
 .side-menu-header {
@@ -73,5 +76,6 @@
 }
 
 .main-content.shifted {
-  right: 320px; /* 사이드 메뉴가 열릴 때 오른쪽으로 이동 */
+  right: 320px;
+  /* 사이드 메뉴가 열릴 때 오른쪽으로 이동 */
 }

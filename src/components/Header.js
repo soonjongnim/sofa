@@ -50,29 +50,32 @@ const Header = ({ toggleMenu }) => {
 
   return (
     <>
-      <header className="flex justify-between p-4 border-b">
-        <Link to="/" className="logo">수원쇼파천갈이</Link>
-        <nav id="menu" className="flex space-x-4 text-sm text-gray-700">
-          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>반갑습니다</Link>
-          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>소개(인사말)</Link>
-          <Link to="/products" className={location.pathname === '/products' ? 'active' : ''}>대표상품</Link>
-          <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>쇼파갤러리</Link>
-          <Link to="/map" className={location.pathname === '/map' ? 'active' : ''}>오시는길</Link>
-          <Link to="/event" className={location.pathname === '/event' ? 'active' : ''}>설문이벤트</Link>
-          <Link to="/coupon" className={location.pathname === '/coupon' ? 'active' : ''}>쿠폰</Link>
-          <Link to="#" className="menu-link" onClick={toggleMenu}>전체보기</Link>
-          {user ? (
-            <>
-              <span className="text-blue-500">안녕하세요, {user.username}님!</span>
-              <button onClick={handleLogout} className="text-red-500 ml-4">로그아웃</button>
-            </>
-          ) : (
-            <>
-              <Link to="/login" className={location.pathname === '/login' ? 'active' : ''}>로그인</Link>
-              <Link to="/signUp" className={location.pathname === '/signUp' ? 'active' : ''}>회원가입</Link>
-            </>
-          )}
-        </nav>
+      <header className="flex justify-between items-center p-4 border-b bg-white sticky top-0 z-50">
+        <Link to="/" className="text-xl font-bold text-purple-600">수원쇼파천갈이</Link>
+        <div className="flex items-center">
+          <nav id="menu" className="hidden md:flex space-x-4 text-sm text-gray-700 mr-4">
+            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>반갑습니다</Link>
+            <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>소개(인사말)</Link>
+            <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>쇼파갤러리</Link>
+            <Link to="/map" className={location.pathname === '/map' ? 'active' : ''}>오시는길</Link>
+            {user ? (
+              <button onClick={handleLogout} className="text-red-500">로그아웃</button>
+            ) : (
+              <Link to="/login">로그인</Link>
+            )}
+          </nav>
+          <button
+            className="p-2 focus:outline-none md:hidden"
+            onClick={toggleMenu}
+            aria-label="Menu"
+          >
+            <div className="space-y-1.5">
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+              <span className="block w-6 h-0.5 bg-gray-600"></span>
+            </div>
+          </button>
+        </div>
       </header>
     </>
   );
