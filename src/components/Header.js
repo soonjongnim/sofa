@@ -55,17 +55,20 @@ const Header = ({ toggleMenu }) => {
       <header className="flex justify-between items-center p-4 border-b bg-white sticky top-0 z-50">
         <Link to="/" className="text-xl font-bold text-purple-600">수원쇼파천갈이</Link>
         <div className="flex items-center">
-          <nav id="menu" className={`${isApp ? 'hidden md:flex' : 'flex'} space-x-4 text-sm text-gray-700 mr-4`}>
-            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>반갑습니다</Link>
-            <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>소개(인사말)</Link>
-            <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>쇼파갤러리</Link>
-            <Link to="/map" className={location.pathname === '/map' ? 'active' : ''}>오시는길</Link>
+          {/* 웹이거나 앱의 데스크톱 뷰일 때 메뉴 노출 */}
+          <nav id="menu" className={`${isApp ? 'hidden md:flex' : 'flex'} flex-wrap gap-x-4 gap-y-2 text-sm text-gray-700 mr-4`}>
+            <Link to="/" className={location.pathname === '/' ? 'text-purple-600 font-bold' : ''}>반갑습니다</Link>
+            <Link to="/about" className={location.pathname === '/about' ? 'text-purple-600 font-bold' : ''}>소개(인사말)</Link>
+            <Link to="/gallery" className={location.pathname === '/gallery' ? 'text-purple-600 font-bold' : ''}>쇼파갤러리</Link>
+            <Link to="/map" className={location.pathname === '/map' ? 'text-purple-600 font-bold' : ''}>오시는길</Link>
             {user ? (
               <button onClick={handleLogout} className="text-red-500">로그아웃</button>
             ) : (
-              <Link to="/login">로그인</Link>
+              <Link to="/login" className={location.pathname === '/login' ? 'text-purple-600 font-bold' : ''}>로그인</Link>
             )}
           </nav>
+
+          {/* 앱일 때만 햄버거 버튼 노출 */}
           {isApp && (
             <button
               className="p-2 focus:outline-none md:hidden"
