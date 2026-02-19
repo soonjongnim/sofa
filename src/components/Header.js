@@ -48,36 +48,52 @@ const Header = ({ toggleMenu }) => {
     alert("세션이 만료되었습니다. 다시 로그인해주세요.");
   };
 
+  const [isSmallScreen, setIsSmallScreen] = React.useState(window.innerWidth <= 350);
+  const isApp = /SOFA_APP/i.test(navigator.userAgent);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 350);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const showHamburger = isApp || isSmallScreen;
+
   return (
     <>
       <header className="flex justify-between items-center p-4 border-b bg-white sticky top-0 z-50">
         <Link to="/" className="text-xl font-bold text-purple-600">수원쇼파천갈이</Link>
         <div className="flex items-center">
-          {/* 데스크톱(768px 이상)에서 메뉴 노출, 모바일에서는 숨김 */}
-          <nav id="menu" className="hidden md:flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-700 mr-4">
-            <Link to="/" className={location.pathname === '/' ? 'text-purple-600 font-bold' : ''}>반갑습니다</Link>
-            <Link to="/about" className={location.pathname === '/about' ? 'text-purple-600 font-bold' : ''}>소개(인사말)</Link>
-            <Link to="/gallery" className={location.pathname === '/gallery' ? 'text-purple-600 font-bold' : ''}>쇼파갤러리</Link>
-            <Link to="/map" className={location.pathname === '/map' ? 'text-purple-600 font-bold' : ''}>오시는길</Link>
-            {user ? (
-              <button onClick={handleLogout} className="text-red-500">로그아웃</button>
-            ) : (
-              <Link to="/login" className={location.pathname === '/login' ? 'text-purple-600 font-bold' : ''}>로그인</Link>
-            )}
-          </nav>
+          {/* 어중간한 모바일 웹에서도 쾌적하게 보이도록 가로 스크롤 허용 또는 줄바꿈 처리 */}
+          {!showHamburger && (
+            <nav id="menu" className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-700 mr-2">
+              <Link to="/" className={location.pathname === '/' ? 'text-purple-600 font-bold' : ''}>반갑습니다</Link>
+              <Link to="/about" className={location.pathname === '/about' ? 'text-purple-600 font-bold' : ''}>소개</Link>
+              <Link to="/gallery" className={location.pathname === '/gallery' ? 'text-purple-600 font-bold' : ''}>갤러리</Link>
+              <Link to="/map" className={location.pathname === '/map' ? 'text-purple-600 font-bold' : ''}>오시는길</Link>
+              {user ? (
+                <button onClick={handleLogout} className="text-red-500">로그아웃</button>
+              ) : (
+                <Link to="/login" className={location.pathname === '/login' ? 'text-purple-600 font-bold' : ''}>로그인</Link>
+              )}
+            </nav>
+          )}
 
-          {/* 모바일(768px 미만)일 때 햄버거 버튼 노출 (브라우저/앱 모두) */}
-          <button
-            className="p-2 focus:outline-none md:hidden"
-            onClick={toggleMenu}
-            aria-label="Menu"
-          >
-            <div className="space-y-1.5">
-              <span className="block w-6 h-0.5 bg-gray-600"></span>
-              <span className="block w-6 h-0.5 bg-gray-600"></span>
-              <span className="block w-6 h-0.5 bg-gray-600"></span>
-            </div>
-          </button>
+          {showHamburger && (
+            <button
+              className="p-2 focus:outline-none"
+              onClick={toggleMenu}
+              aria-label="Menu"
+            >
+              <div className="space-y-1.5">
+                <span className="block w-6 h-0.5 bg-gray-600"></span>
+                <span className="block w-6 h-0.5 bg-gray-600"></span>
+                <span className="block w-6 h-0.5 bg-gray-600"></span>
+              </div>
+            </button>
+          )}
         </div>
       </header>
     </>
