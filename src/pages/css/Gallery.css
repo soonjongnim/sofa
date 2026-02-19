@@ -173,28 +173,40 @@
 .popup-thumbnails {
     position: absolute;
     bottom: 20px;
+    left: 0;
     width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 8px;
-    padding: 0 20px;
+    justify-content: flex-start;
+    /* Changed from center to prevent cropping on overflow */
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+.popup-thumbnails::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for cleaner look */
 }
 
 .popup-thumbnails .thumbnail {
-    width: 50px !important;
-    height: 50px !important;
+    width: 60px !important;
+    height: 60px !important;
     flex-shrink: 0;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.5;
     border: 2px solid transparent;
+    object-fit: cover;
+    transition: all 0.2s;
 }
 
 .popup-thumbnails .thumbnail.active {
     opacity: 1;
     border-color: white;
+    transform: scale(1.1);
 }
 
 @media (max-width: 480px) {
