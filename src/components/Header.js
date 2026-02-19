@@ -53,7 +53,7 @@ const Header = ({ toggleMenu }) => {
       <header className="flex justify-between items-center p-4 border-b bg-white sticky top-0 z-50">
         <Link to="/" className="text-xl font-bold text-purple-600">수원쇼파천갈이</Link>
         <div className="flex items-center">
-          <nav id="menu" className="hidden md:flex space-x-4 text-sm text-gray-700 mr-4">
+          <nav id="menu" className={`hidden md:flex space-x-4 text-sm text-gray-700 mr-4 ${/SOFA_APP/i.test(navigator.userAgent) ? 'app-nav-hidden' : ''}`}>
             <Link to="/" className={location.pathname === '/' ? 'active' : ''}>반갑습니다</Link>
             <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>소개(인사말)</Link>
             <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>쇼파갤러리</Link>

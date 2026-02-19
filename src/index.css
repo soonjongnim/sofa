@@ -30,6 +30,21 @@ body {
   line-height: 1.6;
 }
 
+/* Animations */
+@keyframes slide-banner {
+  0% {
+    transform: scale(1.1) translateX(-5%);
+  }
+
+  50% {
+    transform: scale(1.1) translateX(0%);
+  }
+
+  100% {
+    transform: scale(1.1) translateX(-5%);
+  }
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -37,23 +52,34 @@ header {
   align-items: center;
   padding: 0.8rem 1.2rem;
   background: white;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f0f0f0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .logo {
   font-weight: 800;
   font-size: 1.1rem;
   color: var(--primary);
-  margin-bottom: 0;
+  letter-spacing: -0.5px;
 }
 
 nav {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+/* Hide nav on app, show on web by default */
+.app-nav-hidden {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .app-nav-hidden {
+    display: flex !important;
+  }
 }
 
 nav::-webkit-scrollbar {
@@ -65,73 +91,102 @@ nav a {
   color: var(--text-muted);
   font-weight: 600;
   padding: 0.4rem 0.2rem;
+  transition: color 0.2s;
 }
 
+nav a:hover,
 nav a.active {
   color: var(--primary);
-  border-bottom: 2px solid var(--primary);
 }
 
 .content {
-  padding: 1rem;
+  padding: 0;
   max-width: 100%;
 }
 
-/* Home Section Refinement */
+/* Home Section Modernized */
 .home-section {
-  padding: 0.5rem 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
   text-align: center;
 }
 
 .image-container {
-  width: 95%;
-  max-width: 100%;
-  margin: 0 auto 1rem auto;
-  border-radius: 8px;
+  width: 100%;
+  height: 350px;
+  position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.home-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: slide-banner 20s infinite ease-in-out;
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(4px);
-  width: 90%;
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 85%;
+  max-width: 400px;
+  padding: 1.5rem !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .overlay h1 {
-  font-size: 1.2rem !important;
+  font-size: 1.4rem !important;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.5rem;
+  font-weight: 800;
 }
 
-/* Refined buttons */
-.button-container,
-.contact-container {
+.overlay p {
+  font-size: 0.9rem !important;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+/* Unified Buttons */
+.button-container {
   display: grid !important;
-  grid-template-columns: 1fr;
-  gap: 0.6rem;
-  padding: 0 0.8rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  background: white;
   margin-bottom: 1rem;
   float: none !important;
-}
-
-.button-container {
-  grid-template-columns: repeat(2, 1fr);
 }
 
 .action-button,
 .contact-button {
   float: none !important;
   width: 100% !important;
-  border-radius: 8px !important;
+  height: 60px !important;
+  border-radius: 12px !important;
   padding: 1rem !important;
-  font-size: 0.95rem !important;
+  font-size: 1rem !important;
   font-weight: 600 !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ddd !important;
-  background: white !important;
-  color: #333 !important;
+  border: none !important;
+  background: #f3f0f5 !important;
+  color: var(--text-main) !important;
   box-shadow: none !important;
+  transition: all 0.2s;
+}
+
+.action-button:active,
+.contact-button:active {
+  transform: scale(0.96);
 }
 
 .action-button:hover,
@@ -144,8 +199,42 @@ nav a.active {
 /* Make calling button more prominent but consistent */
 .button-container button:last-child {
   grid-column: span 2;
-  border-color: var(--primary) !important;
-  color: var(--primary) !important;
+  background: var(--primary) !important;
+  color: white !important;
+}
+
+/* Footer SNS Icons */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #f0f0f0;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.social-icons a:hover {
+  background: var(--primary);
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+.social-icons a:hover img {
+  filter: grayscale(0) brightness(100);
 }
 
 /* Footer & Other tweaks */
