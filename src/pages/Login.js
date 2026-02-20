@@ -60,7 +60,7 @@ const Login = () => {
             {...register("useremail", {
               required: "이메일은 필수 입력입니다.",
               validate: (value) =>
-                value === "admin" || /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(value) || 
+                value === "admin" || /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(value) ||
                 "이메일 형식에 맞지 않습니다.",
             })}
           />
@@ -90,6 +90,21 @@ const Login = () => {
         {/* 제출 버튼 */}
         <button type="submit" className="signup-button">
           로그인
+        </button>
+
+        {/* 회원가입 버튼 */}
+        <button
+          type="button"
+          className="login-signup-button"
+          onClick={() => navigate("/signup")}
+          style={{
+            marginTop: '10px',
+            backgroundColor: '#fff',
+            color: '#9c73b1',
+            border: '1px solid #9c73b1'
+          }}
+        >
+          회원가입
         </button>
       </form>
     </div>
