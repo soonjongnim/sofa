@@ -81,15 +81,25 @@ const Header = ({ toggleMenu }) => {
           )}
 
           {showHamburger && (
-            <button
-              className="hamburger-btn"
-              onClick={toggleMenu}
-              aria-label="Menu"
-            >
-              <span className="hamburger-line"></span>
-              <span className="hamburger-line"></span>
-              <span className="hamburger-line"></span>
-            </button>
+            <div className="flex items-center">
+              {!user && (
+                <Link
+                  to="/login"
+                  className="mr-3 text-sm font-bold text-purple-600 bg-purple-50 px-3 py-1.5 rounded-full border border-purple-200 hover:bg-purple-100 transition-all"
+                >
+                  로그인
+                </Link>
+              )}
+              <button
+                className="hamburger-btn"
+                onClick={toggleMenu}
+                aria-label="Menu"
+              >
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+              </button>
+            </div>
           )}
         </div>
       </header>
