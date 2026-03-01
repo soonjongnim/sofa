@@ -17,6 +17,7 @@ const SideMenu = ({ isOpen, onClose }) => {
         <li><Link to="/map" onClick={onClose}>오시는길</Link></li>
         <li><Link to="/event" onClick={onClose}>설문이벤트</Link></li>
         <li><Link to="/coupon" onClick={onClose}>쿠폰</Link></li>
+        <li><Link to="/device-info" onClick={onClose}>기기정보</Link></li>
       </ul>
     </div>
   );

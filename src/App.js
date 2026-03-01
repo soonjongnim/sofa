@@ -15,6 +15,7 @@ import './pages/css/App.css'; // CSS 파일 추가
 import SideMenu from './components/SideMenu';
 import SignUp from './pages/SignUp';
 import Posts from './pages/Posts';
+import DeviceInfo from './pages/DeviceInfo';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 사이드 메뉴 상태
@@ -26,10 +27,9 @@ const App = () => {
   return (
     <UserProvider>
       <Router>
-        <div 
-          className={`min-h-screen flex flex-col ${
-            isMenuOpen ? 'menu-open' : ''
-          }`} // 메뉴 열림 상태에 따라 클래스 추가
+        <div
+          className={`min-h-screen flex flex-col ${isMenuOpen ? 'menu-open' : ''
+            }`} // 메뉴 열림 상태에 따라 클래스 추가
         >
           <Header toggleMenu={toggleMenu} /> {/* toggleMenu를 Header에 전달 */}
           <SideMenu isOpen={isMenuOpen} onClose={toggleMenu} />
@@ -45,6 +45,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/signUp" element={<SignUp />} />
               <Route path="/posts" element={<Posts />} />
+              <Route path="/device-info" element={<DeviceInfo />} />
             </Routes>
           </main>
           <Footer />
